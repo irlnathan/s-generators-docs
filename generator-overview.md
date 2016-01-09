@@ -105,21 +105,23 @@ module.exports = function () {
 };
 ``` 
 
-The folder and file illustrate the power of the _generator_ not only to create elements but to use variables from the command-line to influence their content.
+The folder and file illustrate the power of the _generator_ not only to create elements but to use `arguments` from the command-line to influence their content. For example, the file name, `example`, used an element from the command line argument `sails generate awesome example`.
 
 ##Basic generator configuration
 
-All of the configuration for the `awesome` _generator_ is contained in `\myProjects\awesome\Generator.js`.  The main parts of `Generator.js` is the `before()` function and the `targets` object.
+All of the configuration for the `awesome` _generator_ is contained in `\myProjects\awesome\Generator.js`.  The main parts of `Generator.js` are the `before()` function and the `targets` dictionary.
 
-###Configuring the before() function
+> **Note:** We refer to the JavaScript object that uses `{}` as a dictionary.
 
-Let's take a closer look at `Generator.js`:
+###Configuring the `before()` function
+
+Let's take a closer look at `myProject/awesome/Generator.js`:
 
 <img src="http://i.imgur.com/1VOvDwe.jpg" />
 
-Each _generator_ is passed the `scope` object which is useful when you want to otain the arguments that were entered when the _generator_ was executed as well as passing information to templates and other _generators_.
+Each _generator_ has access to the `scope` dictionary, which is useful when you want to obtain the arguments that were entered when the _generator_ was executed.
 
-In our default `awesome` _generator_ a new key, `createdAt:` was created in our scope.  We'll take a look at this object within a template in a second.
+In your default `awesome` _generator_ a new key, `createdAt:` was created in the scope.  We'll take a look at this dictionary within a template momentarily.
 
 ```javascript
 ...
@@ -137,7 +139,7 @@ scope.filename = scope.args[0];
 ...
 ```
 
-Finally, another property (e.g. scope.whatIsThis) was added to the scope object.
+Finally, another property (e.g. scope.whatIsThis) was added to the scope dictionary.
 
 ```javascript
 ...
@@ -145,9 +147,9 @@ scope.whatIsThis = 'an example file created at '+scope.createdAt;
 ...
 ```
 
-###Configuring the targets object
+###Configuring the targets dictionary
 
-Now, let's take a look at the `targets` object in `myProject\awesome\Generator.js` to better understand how the folder (e.g. hey_look_a_folder) and file (e.g. example) were generated. 
+Now, let's take a look at the `targets` dictionary in `myProject\awesome\Generator.js` to better understand how the folder (e.g. hey_look_a_folder) and file (e.g. example) were generated. 
 
 <img src="http://i.imgur.com/D2YAqBl.jpg?1" />
 
@@ -155,7 +157,7 @@ The `template` and `folder` helpers look a lot like routes.  These helpers perfo
 
 ####The _template_ helper
 
-Not surprisingly the _template_ helper creates files based upon a template.  Remember, that the scope object is accessible to the templates.
+Not surprisingly the _template_ helper creates files based upon a template.  Remember, that the scope dictionary is accessible to the templates.
 
 ```javascript
 ...
@@ -163,7 +165,7 @@ Not surprisingly the _template_ helper creates files based upon a template.  Rem
 ...
 ```
 
-The left-hand side specifies the path and filename where as the right dictates which template the _generator_ will use to create the file.  Notice we're using the `filename` from the `scope.filename` assignment that was based upon the the first element of `scope.args` in the `before()` function.  The templates can be found in `myProject\awesome\templates`.  In the awesome _generator_ we're using `example.template.js`:
+The left-hand side specifies the path and filename where as the right dictates which template the _generator_ will use to create the file.  Notice you're using the `filename` from the `scope.filename` assignment that was based upon the the first element of `scope.args` in the `before()` function.  The templates can be found in `myProject\awesome\templates`.  In the awesome _generator_ you're using `example.template.js`:
 
 ```javascript
 /**
@@ -205,7 +207,7 @@ You can also use the `--force` parameter from the command-line when executing th
 ```
 
 ##Using a generator within a generator
-To leverage the work of other programmers, _generators_ were designed to be used by other _generators_.  This is where the scope object being passed down to all _generators_ becomes really powerful. 
+To leverage the work of other programmers, _generators_ were designed to be used by other _generators_.  This is where the scope dictionary being passed down to all _generators_ becomes really powerful. 
 
 For example, Sails core has a _generator_ called `sails-generate-model`.  Since it's built into Sails core, there's no installation necessary.  To add it to our awesome _generator_ example is simple.  Within the `myProject\awesome\Generator.js` include it by inserting `./': ['model'],`
 
@@ -259,7 +261,7 @@ From within the `myProject\awesome` folder at the terminal type:
 ```sh
 ~/ $ npm publish
 ```
->**Note:** I'm assuming you already have an account on npm.  If not, go to (npmjs.org)[https://www.npmjs.org/] and create one.
+>**Note:**  If don't already have an NPM account, go to (npmjs.org)[https://www.npmjs.org/] and create one.
 
 To unpublish the module, type: 
 
