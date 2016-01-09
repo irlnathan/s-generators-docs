@@ -3,7 +3,7 @@
 Sails is all about automating repetitive tasks to make your programming easier and **Generators** are no exception.  _Generators_ are command line utilities within Sails that automate the generation of files through templates within your Sails projects.  In fact, Sails core uses _generators_ to create Sails projects.  So when you type...
 
 ```sh
-$sails new myProject
+~/ $ sails new myProject
 ```
 
 ...sails is using _generators_ to build up the initial folder structure of a Sails app like this:
@@ -35,11 +35,11 @@ Other examples of _generators_ in Sails core (meaning they are built into Sails)
 - sails-generate-new
 - sails-generate-views
 - sails-generate-views-jade
-> Although not a stand-alone module there's one other _generator_ accessed via `$sails generate api`
+- Although not a stand-alone module there's one other _generator_ accessed via `sails generate api`
 
-**But what about if I want to create my own Generator?**
+**But what if I want to create my own Generator?**
 
-I am so glad you asked!  Believe it or not, there's a _Generator_ for that -- `sails-generate-generator`. For this tutorial I'm going to create a default _generator_ and explain some of the its default behavior.
+To begin the process of generating a generator you can use `sails-generate-generator`. For this tutorial I'm going to create a default _generator_ and explain some of the its default behavior.
 
 >**Note:** The idea of creating a _generator_ by invoking a _generator_ may seem like some kind of demented infinite loop but trust me it will soon become crystal clear.
 
@@ -49,13 +49,13 @@ I am so glad you asked!  Believe it or not, there's a _Generator_ for that -- `s
 First we need a Sails project.  If you haven't already created one go to your terminal and type:
 
 ```sh
-$sails new myProject
+~/ $ sails new myProject
 ```
 
 `cd` into `myProject` or from any existing Sails project create a _generator_ from the terminal named **awesome** by typing:
 
 ```sh
-$sails generate generator awesome 
+~/ $ sails generate generator awesome 
 ```
 
 You should be presented with `info: Created a new generator!`.
@@ -65,7 +65,7 @@ You should be presented with `info: Created a new generator!`.
 To enable the _generator_ I need to tell Sails about it in the `\myProject\.sailsrc` file. Normally you would link to an npm module in `.sailsrc` and then install it with `npm install`, however, we're going to link directly to the one we just created.  To do that go back to the terminal and `cd` into the `awesome` _generator_ folder and type:
 
 ```sh 
-$ pwd
+~/ $  pwd
 ```
 
 Using the `pwd` command will return a fully resolved path to the _generator_ (e.g. `/Users/irl/sails_projects/myProject/awesome`).
@@ -203,7 +203,7 @@ The left-hand side specifies the path and name of the folder.  The right-hand si
 You can also use the `--force` parameter from the command-line when executing the _generator_ which will configure all helpers to overwrite:
 
 ```sh
-$sails generate awesome test --force
+~/ $ sails generate awesome test --force
 ```
 
 ##Using a generator within a generator
@@ -229,7 +229,7 @@ targets: {
 That's it!  Now let's create a model from within the awesome _generator_.  From the terminal type:
 
 ```sh
-$sails generate awesome user name:string email:email
+~/ $ sails generate awesome user name:string email:email
 ```
 
 If you take a look in `myProject\api\models` you'll see a new file named `User.js` has been created that contains the model attributes specified earlier.
@@ -259,14 +259,14 @@ To publish the awesome _generator_ to npmjs.org go into the `myProject\awesome\p
 
 From within the `myProject\awesome` folder at the terminal type:
 ```sh
-$npm publish
+~/ $ npm publish
 ```
 >**Note:** I'm assuming you already have an account on npm.  If not, go to (npmjs.org)[https://www.npmjs.org/] and create one.
 
 To unpublish the module, type: 
 
 ```sh
-$ npm unpublish` --force
+~/ $  npm unpublish` --force
 ```
 Change the `myProject\.sailsrc` to:
 
@@ -283,7 +283,7 @@ Change the `myProject\.sailsrc` to:
 From the awesome _generator_ folder within the terminal type:
 
 ```sh
-$npm install
+~/ $ npm install
 ```
 
 And you're all set!
