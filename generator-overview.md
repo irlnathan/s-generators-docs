@@ -69,8 +69,7 @@ The `pwd` command will return a fully resolved path to the _generator_ (e.g. `/U
 
 Copy the path and then open `myProject/.sailsrc`.  Within the `modules` property add an `awesome` key and paste the path to the `awesome` _generator_ as the value. 
 
-> *Note:*
- you can name the _generator_ anything you want, but I'm going to stick with `awesome`:
+> **Note:** you can name the _generator_ anything you want, for now let's stick with `awesome`:
 
 ```javascript
 {
@@ -83,11 +82,11 @@ Copy the path and then open `myProject/.sailsrc`.  Within the `modules` property
 ```
 >**Note:** Whatever name you give your _generator_ in the `.sailsrc` file will be the name you'll use from the terminal command-line to execute it.
 
-Lastly, we need to do an `npm install` from the terminal.
+Lastly, you'll need to do an `npm install` from the terminal in order to install the necessary modules that were added to the generator's `package.json` file.
 
-##Using your first Generator
+##Using the Generator
 
-Back at the terminal I can use the newly created _generator_ by typing `sails generate awesome example`.
+Back at the terminal type: `sails generate awesome example`. Let's take a look at what was generated.
 
 ###What did the Generator create?
 
