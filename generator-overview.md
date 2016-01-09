@@ -37,14 +37,11 @@ Other examples of _generators_ in Sails core (meaning they are built into Sails)
 - sails-generate-views-jade
 - Although not a stand-alone module there's one other _generator_ accessed via `sails generate api`
 
-**But what if I want to create my own Generator?**
+To begin the process of generating a generator you can use `sails-generate-generator`. 
 
-To begin the process of generating a generator you can use `sails-generate-generator`. For this tutorial I'm going to create a default _generator_ and explain some of the its default behavior.
+>**Note:** The idea of creating a _generator_ by invoking a _generator_ may seem like some kind of demented infinite loop but trust us it will not create a worm hole to an evil alternate universe. 
 
->**Note:** The idea of creating a _generator_ by invoking a _generator_ may seem like some kind of demented infinite loop but trust me it will soon become crystal clear.
-
-
-##Creating your first Generator
+##Creating a Generator
 
 First we need a Sails project.  If you haven't already created one go to your terminal and type:
 
@@ -52,13 +49,13 @@ First we need a Sails project.  If you haven't already created one go to your te
 ~/ $ sails new myProject
 ```
 
-`cd` into `myProject` or from any existing Sails project create a _generator_ from the terminal named **awesome** by typing:
+`cd` into `myProject` or from any existing Sails project and create a _generator_ from the terminal named **awesome** by typing:
 
 ```sh
 ~/ $ sails generate generator awesome 
 ```
 
-You should be presented with `info: Created a new generator!`.
+You'll know the generator was created if you see the message: `info: Created a new generator!`.
 
 ##Enabling your first Generator
 
