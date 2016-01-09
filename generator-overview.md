@@ -90,9 +90,8 @@ Back at the terminal type: `sails generate awesome example`. Let's take a look a
 
 ###What did the Generator create?
 
-If you open up your project in a text editor you'll notice that a folder called `hey_look_a_folder` has been created and  a file named `example` was also created. 
+Open up your project in a text editor you'll notice that a folder called `hey_look_a_folder` was created and a file named `example` was also created: 
 
-Let's take a look at the `example` file:
 
 ```javascript
 /**
