@@ -57,17 +57,20 @@ First we need a Sails project.  If you haven't already created one go to your te
 
 You'll know the generator was created if you see the message: `info: Created a new generator!`.
 
-##Enabling your first Generator
+##Enabling the Generator
 
-To enable the _generator_ I need to tell Sails about it in the `\myProject\.sailsrc` file. Normally you would link to an npm module in `.sailsrc` and then install it with `npm install`, however, we're going to link directly to the one we just created.  To do that go back to the terminal and `cd` into the `awesome` _generator_ folder and type:
+To enable the _generator_ you need to tell Sails about it via `\myProject\.sailsrc`. If you were using an existing generator you would link to an npm module in `.sailsrc` and then just install it with `npm install`.  Since you're developing a generator, you'll link to it directly.  To create the link go back to the terminal and `cd` into the `awesome` _generator_ folder and type:
 
 ```sh 
 ~/ $  pwd
 ```
 
-Using the `pwd` command will return a fully resolved path to the _generator_ (e.g. `/Users/irl/sails_projects/myProject/awesome`).
+The `pwd` command will return a fully resolved path to the _generator_ (e.g. `/Users/irl/sails_projects/myProject/awesome`).
 
-Open `.sailsrc` and place the path to the `awesome` _generator_, you can name the _generator_ anything you want, but I'm going to stick with awesome:
+Copy the path and then open `myProject/.sailsrc`.  Within the `modules` property add an `awesome` key and paste the path to the `awesome` _generator_ as the value. 
+
+> *Note:*
+ you can name the _generator_ anything you want, but I'm going to stick with `awesome`:
 
 ```javascript
 {
